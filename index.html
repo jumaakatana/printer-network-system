@@ -2,168 +2,73 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Simple Network-Based Printer System</title>
+    <title>Network Printer System</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<h1>Simple Network-Based Printer System</h1>
+<div class="container">
 
-<!-- LOGIN INTERFACE -->
-<div class="screen" id="loginScreen">
-    <h2>Login Interface</h2>
-    <label>Username</label>
-    <input type="text" id="username">
-    
-    <label>Password</label>
-    <input type="password" id="password">
+    <!-- LOGIN -->
+    <div class="card screen" id="loginScreen">
+        <h2>Login</h2>
 
-    <button onclick="login()">Login</button>
-    <p id="loginError" class="error"></p>
-</div>
+        <input type="text" id="loginUser" placeholder="Username">
+        <input type="password" id="loginPass" placeholder="Password">
 
-<!-- ADMIN DASHBOARD -->
-<div class="screen" id="adminDashboard">
-    <h2>Administrator Dashboard</h2>
+        <button class="btn primary" onclick="login()">Login</button>
+        <button class="btn link" onclick="showScreen('registerScreen')">
+            Create Account
+        </button>
 
-    <div class="menu">
-        <button onclick="showScreen('userManagement')">Manage Users</button>
-        <button onclick="showScreen('printerManagement')">Manage Printer</button>
-        <button onclick="logout()">Logout</button>
+        <p class="error" id="loginError"></p>
     </div>
 
-    <div class="status-box">
-        <div>Total Users: 5</div>
-        <div>Pending Jobs: 3</div>
-        <div>Printer Status: Online</div>
+    <!-- REGISTER -->
+    <div class="card screen" id="registerScreen">
+        <h2>Create Account</h2>
+
+        <input type="text" id="regUser" placeholder="Username">
+        <input type="password" id="regPass" placeholder="Password">
+
+        <select id="regRole">
+            <option value="user">User</option>
+            <option value="admin">Admin</option>
+        </select>
+
+        <button class="btn primary" onclick="register()">Register</button>
+        <button class="btn secondary" onclick="showScreen('loginScreen')">
+            Back to Login
+        </button>
+
+        <p class="success" id="regMsg"></p>
     </div>
-</div>
 
-<!-- USER MANAGEMENT -->
-<div class="screen" id="userManagement">
-    <h2>User Management Interface</h2>
+    <!-- ADMIN DASHBOARD -->
+    <div class="card screen" id="adminDashboard">
+        <h2>Administrator Dashboard</h2>
 
-    <table>
-        <tr>
-            <th>Username</th>
-            <th>Role</th>
-            <th>Status</th>
-            <th>Action</th>
-        </tr>
-        <tr>
-            <td>john_smith</td>
-            <td>Admin</td>
-            <td>Active</td>
-            <td><button>Edit</button></td>
-        </tr>
-        <tr>
-            <td>susan</td>
-            <td>Student</td>
-            <td>Active</td>
-            <td><button>Edit</button></td>
-        </tr>
-    </table>
+        <div class="grid">
+            <div class="box">Total Users<br><b>5</b></div>
+            <div class="box">Pending Jobs<br><b>3</b></div>
+            <div class="box">Printer Status<br><b>Online</b></div>
+        </div>
 
-    <button onclick="showScreen('adminDashboard')">Back</button>
-</div>
+        <button class="btn primary">Manage Users</button>
+        <button class="btn primary">Manage Print Jobs</button>
+        <button class="btn danger" onclick="logout()">Logout</button>
+    </div>
 
-<!-- PRINTER MANAGEMENT / JOB APPROVAL -->
-<div class="screen" id="printerManagement">
-    <h2>Print Job Approval Interface</h2>
+    <!-- USER DASHBOARD -->
+    <div class="card screen" id="userDashboard">
+        <h2>User Dashboard</h2>
 
-    <table>
-        <tr>
-            <th>Username</th>
-            <th>Document</th>
-            <th>Pages</th>
-            <th>Action</th>
-        </tr>
-        <tr>
-            <td>susan</td>
-            <td>essay.pdf</td>
-            <td>2</td>
-            <td>
-                <button>Approve</button>
-                <button class="danger">Reject</button>
-            </td>
-        </tr>
-    </table>
+        <button class="btn primary">Submit Print Job</button>
+        <button class="btn primary">View Print Status</button>
+        <button class="btn primary">Print History</button>
+        <button class="btn danger" onclick="logout()">Logout</button>
+    </div>
 
-    <button onclick="showScreen('adminDashboard')">Back</button>
-</div>
-
-<!-- USER DASHBOARD -->
-<div class="screen" id="userDashboard">
-    <h2>User Dashboard</h2>
-
-    <button onclick="showScreen('submitJob')">Submit Print Job</button>
-    <button onclick="showScreen('jobStatus')">View Print Status</button>
-    <button onclick="showScreen('printHistory')">Print History</button>
-    <button onclick="logout()">Logout</button>
-</div>
-
-<!-- PRINT JOB SUBMISSION -->
-<div class="screen" id="submitJob">
-    <h2>Print Job Submission Interface</h2>
-
-    <label>Document Name</label>
-    <input type="text">
-
-    <label>Pages</label>
-    <input type="number">
-
-    <button onclick="alert('Print Job Submitted')">Submit</button>
-    <button onclick="showScreen('userDashboard')">Back</button>
-</div>
-
-<!-- PRINT JOB STATUS -->
-<div class="screen" id="jobStatus">
-    <h2>Print Job Status Interface</h2>
-
-    <table>
-        <tr>
-            <th>Job ID</th>
-            <th>Document</th>
-            <th>Status</th>
-            <th>Action</th>
-        </tr>
-        <tr>
-            <td>001</td>
-            <td>essay.pdf</td>
-            <td>Pending</td>
-            <td><button class="danger">Cancel</button></td>
-        </tr>
-        <tr>
-            <td>002</td>
-            <td>chart.docx</td>
-            <td>Approved</td>
-            <td>-</td>
-        </tr>
-    </table>
-
-    <button onclick="showScreen('userDashboard')">Back</button>
-</div>
-
-<!-- PRINT HISTORY -->
-<div class="screen" id="printHistory">
-    <h2>Print History Interface</h2>
-
-    <table>
-        <tr>
-            <th>Date</th>
-            <th>Document</th>
-            <th>Pages</th>
-            <th>Printer</th>
-        </tr>
-        <tr>
-            <td>04/21/2024</td>
-            <td>essay.pdf</td>
-            <td>2</td>
-            <td>Printer1</td>
-        </tr>
-    </table>
-
-    <button onclick="showScreen('userDashboard')">Back</button>
 </div>
 
 <script src="script.js"></script>
