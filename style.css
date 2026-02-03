@@ -1,5 +1,5 @@
 body {
-    background: #eef2f7;
+    background: #f1f5f9;
     font-family: Arial, sans-serif;
 }
 
@@ -11,32 +11,28 @@ body {
 }
 
 .card {
-    background: white;
+    background: #fff;
     padding: 30px;
-    width: 350px;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+    width: 360px;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
     text-align: center;
-}
-
-.card h2 {
-    margin-bottom: 20px;
 }
 
 input, select {
     width: 100%;
     padding: 10px;
-    margin: 8px 0;
-    border-radius: 5px;
+    margin: 6px 0;
+    border-radius: 6px;
     border: 1px solid #ccc;
 }
 
 .btn {
     width: 100%;
     padding: 10px;
-    margin-top: 10px;
+    margin-top: 8px;
     border: none;
-    border-radius: 5px;
+    border-radius: 6px;
     cursor: pointer;
     font-size: 15px;
 }
@@ -56,37 +52,30 @@ input, select {
     color: white;
 }
 
-.link {
-    background: none;
+.google {
+    background: white;
+    border: 1px solid #ccc;
+}
+
+.links {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    font-size: 13px;
     color: #007bff;
+    cursor: pointer;
 }
 
 .error {
     color: red;
-    margin-top: 10px;
+    margin-top: 8px;
 }
 
 .success {
     color: green;
-    margin-top: 10px;
-}
-
-.grid {
-    display: flex;
-    justify-content: space-between;
-    margin: 15px 0;
-}
-
-.box {
-    background: #f1f1f1;
-    padding: 10px;
-    width: 30%;
-    border-radius: 5px;
-    font-size: 14px;
+    margin-top: 8px;
 }
 
 .screen {
     display: none;
 }
-
-
