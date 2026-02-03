@@ -17,9 +17,15 @@
         <input type="password" id="loginPass" placeholder="Password">
 
         <button class="btn primary" onclick="login()">Login</button>
-        <button class="btn link" onclick="showScreen('registerScreen')">
-            Create Account
+
+        <button class="btn google" onclick="googleLogin()">
+            Continue with Google
         </button>
+
+        <div class="links">
+            <span onclick="showScreen('forgotScreen')">Forgot password?</span>
+            <span onclick="showScreen('registerScreen')">Create account</span>
+        </div>
 
         <p class="error" id="loginError"></p>
     </div>
@@ -29,7 +35,13 @@
         <h2>Create Account</h2>
 
         <input type="text" id="regUser" placeholder="Username">
+        <input type="email" id="regEmail" placeholder="Email">
         <input type="password" id="regPass" placeholder="Password">
+        <input type="password" id="regConfirm" placeholder="Confirm Password">
+
+        <button class="btn primary" onclick="sendCode()">Send Verification Code</button>
+
+        <input type="text" id="regCode" placeholder="Enter verification code">
 
         <select id="regRole">
             <option value="user">User</option>
@@ -37,26 +49,26 @@
         </select>
 
         <button class="btn primary" onclick="register()">Register</button>
-        <button class="btn secondary" onclick="showScreen('loginScreen')">
-            Back to Login
-        </button>
+        <button class="btn secondary" onclick="showScreen('loginScreen')">Back</button>
 
         <p class="success" id="regMsg"></p>
     </div>
 
-    <!-- ADMIN DASHBOARD -->
-    <div class="card screen" id="adminDashboard">
-        <h2>Administrator Dashboard</h2>
+    <!-- FORGOT PASSWORD -->
+    <div class="card screen" id="forgotScreen">
+        <h2>Reset Password</h2>
 
-        <div class="grid">
-            <div class="box">Total Users<br><b>5</b></div>
-            <div class="box">Pending Jobs<br><b>3</b></div>
-            <div class="box">Printer Status<br><b>Online</b></div>
-        </div>
+        <input type="email" id="resetEmail" placeholder="Enter your email">
 
-        <button class="btn primary">Manage Users</button>
-        <button class="btn primary">Manage Print Jobs</button>
-        <button class="btn danger" onclick="logout()">Logout</button>
+        <button class="btn primary" onclick="sendResetCode()">Send Code</button>
+
+        <input type="text" id="resetCode" placeholder="Enter code">
+        <input type="password" id="newPass" placeholder="New Password">
+
+        <button class="btn primary" onclick="resetPassword()">Reset Password</button>
+        <button class="btn secondary" onclick="showScreen('loginScreen')">Back</button>
+
+        <p class="success" id="resetMsg"></p>
     </div>
 
     <!-- USER DASHBOARD -->
@@ -64,8 +76,7 @@
         <h2>User Dashboard</h2>
 
         <button class="btn primary">Submit Print Job</button>
-        <button class="btn primary">View Print Status</button>
-        <button class="btn primary">Print History</button>
+        <button class="btn primary">Print Status</button>
         <button class="btn danger" onclick="logout()">Logout</button>
     </div>
 
